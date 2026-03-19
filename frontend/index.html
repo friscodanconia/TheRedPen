@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Red Pen — AI Writing Pattern Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>The Red Pen</h1>
+    <p class="tagline">See the AI patterns in your writing. Fix them before anyone else notices.</p>
+  </header>
+
+  <main class="container">
+    <section class="editor-section">
+      <div class="editor-label">Paste your writing below <span>— we'll find the AI patterns</span></div>
+      <div class="editor-wrap">
+        <div class="editor-overlay" id="editor-overlay"></div>
+        <textarea id="editor" placeholder="Paste your text here..." spellcheck="false"></textarea>
+      </div>
+      <div class="editor-toolbar">
+        <div class="toolbar-left">
+          <button id="analyze-btn" class="btn-primary">Analyze</button>
+          <button id="sample-btn" class="btn-ghost">Try a sample</button>
+          <button id="clear-btn" class="btn-ghost">Clear</button>
+        </div>
+        <div class="toolbar-right">
+          <span id="word-count" class="word-count">0 words</span>
+          <button id="copy-report-btn" class="btn-ghost btn-small">Copy report</button>
+        </div>
+      </div>
+      <div id="text-warning" class="text-warning"></div>
+    </section>
+
+    <section id="summary-bar" class="summary-bar hidden">
+      <div class="summary-item summary-total">
+        <span class="summary-number" id="total-issues">0</span>
+        <span class="summary-label">AI patterns found</span>
+      </div>
+      <div class="summary-item" id="model-match">
+        <span class="summary-number">—</span>
+        <span class="summary-label">Model match</span>
+      </div>
+      <div class="summary-item" id="word-variety">
+        <span class="summary-number">—</span>
+        <span class="summary-label">Word variety</span>
+      </div>
+      <div class="summary-item" id="sentence-rhythm">
+        <span class="summary-number">—</span>
+        <span class="summary-label">Sentence rhythm</span>
+      </div>
+      <div class="summary-item" id="paragraph-shape">
+        <span class="summary-number">—</span>
+        <span class="summary-label">Paragraph shape</span>
+      </div>
+    </section>
+
+    <section id="findings-section" class="findings-section hidden">
+      <nav class="tab-bar" id="tab-bar">
+        <button class="tab active" data-tab="words">AI Favorite Words</button>
+        <button class="tab" data-tab="structures">Cliche Structures</button>
+        <button class="tab" data-tab="rhythm">Writing Rhythm</button>
+        <button class="tab" data-tab="padding">Repetition &amp; Padding</button>
+        <button class="tab" data-tab="vague">Vague vs Specific</button>
+      </nav>
+      <div class="tab-panels">
+        <div class="tab-panel active" id="panel-words"></div>
+        <div class="tab-panel" id="panel-structures"></div>
+        <div class="tab-panel" id="panel-rhythm"></div>
+        <div class="tab-panel" id="panel-padding"></div>
+        <div class="tab-panel" id="panel-vague"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Based on <a href="https://github.com/hardikpandya/stop-slop" target="_blank" rel="noreferrer">Stop Slop</a> by Hardik Pandya. All analysis runs in your browser — your text never leaves your machine.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

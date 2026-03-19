@@ -1,134 +1,182 @@
-# Structures to Avoid
+# AI Writing Patterns — Structure Reference
 
-## Binary Contrasts
+This file documents all structural patterns detected by The Red Pen. These are patterns in how AI organizes sentences and paragraphs, not individual word choices.
 
-These create false drama. State the point directly.
+## Binary Contrast ("Not X — It's Y")
 
-| Pattern | Problem |
-|---------|---------|
-| "Not because X. Because Y." / "Not because X, but because Y." | Telegraphed reversal |
-| "[X] isn't the problem. [Y] is." | Formulaic reframe |
-| "The answer isn't X. It's Y." | Predictable pivot |
-| "It feels like X. It's actually Y." | Setup/reveal cliche |
-| "The question isn't X. It's Y." | Rhetorical misdirection |
-| "Not X. But Y." / "not X, it's Y" / "isn't X, it's Y" | Mechanical contrast |
-| "It's not this. It's that." | Same formula, different words |
-| "stops being X and starts being Y" | False transformation arc |
-| "doesn't mean X, but actually Y" | Negation-then-assertion crutch |
-| "is about X but not Y" | False distinction |
-| "not just X but also Y" | Additive hedge |
+The #1 confirmed AI writing tell. AI creates false drama through negation before the real point.
 
-**Instead:** State Y directly. "The problem is Y." "Y matters here." Drop the negation entirely.
+**Patterns detected:**
+- "Not because X. Because Y."
+- "isn't the problem. Y is."
+- "The answer isn't X. It's Y."
+- "It's not just a tool — it's a revolution."
+- "stops being X and starts being Y"
+- "not just about X — it's about Y"
 
-## Negative Listing
+**Fix:** State Y directly. "The problem is Y." Drop the negation entirely.
 
-Listing what something is *not* before revealing what it *is*. A rhetorical striptease.
+## Negative Listing (Striptease Reveal)
 
-| Pattern | Problem |
-|---------|---------|
-| "Not a X... Not a Y... A Z." | Dramatic buildup through negation |
-| "It wasn't X. It wasn't Y. It was Z." | Same structure, past tense |
+Multiple negations before the actual point. A rhetorical striptease.
 
-**Instead:** State Z. The reader doesn't need the runway.
+**Pattern:** "Not a X... Not a Y... A Z."
+
+**Fix:** State Z. The reader doesn't need the runway.
 
 ## Dramatic Fragmentation
 
-Sentence fragments for emphasis read as manufactured profundity.
+Sentence fragments stacked for manufactured profundity.
 
-| Pattern | Problem |
-|---------|---------|
-| "[Noun]. That's it. That's the [thing]." | Performative simplicity |
-| "X. And Y. And Z." | Staccato drama |
-| "This unlocks something. [Word]." | Artificial revelation |
+**Patterns detected:**
+- "Speed. Quality. Cost." — 2+ consecutive fragments of ≤3 words
+- "And that's it. That's the thing."
 
-**Instead:** Complete sentences. Trust content over presentation.
+**Fix:** Complete sentences. Trust content over formatting.
 
-## Rhetorical Setups
+## Rule of Three Abuse
 
-These announce insight rather than deliver it.
+Tricolons (three-item lists) everywhere. Occasional use is fine; compulsive use (3+ per piece) is AI.
 
-| Pattern | Problem |
-|---------|---------|
-| "What if [reframe]?" | Socratic posturing |
-| "Here's what I mean:" | Redundant preview |
-| "Think about it:" | Condescending prompt |
-| "And that's okay." | Unnecessary permission |
+**Pattern:** "X, Y, and Z" appearing 3+ times in a text.
 
-**Instead:** Make the point. Let readers draw conclusions.
+**Fix:** Vary list lengths. Use two items or four. Break the three-beat pattern.
 
-## Formulaic Constructions
+## Copula Avoidance
 
-| Pattern | Problem |
-|---------|---------|
-| "By the time X, I was Y." | Narrative template |
-| "X that isn't Y" | Indirect. Say "X is broken" |
+AI avoids simple "is"/"are" because of training incentives. Instead uses:
 
-## False Agency
+| AI writes | Human writes |
+|-----------|-------------|
+| serves as | is |
+| stands as | is |
+| functions as | is |
+| acts as | is |
+| operates as | is |
+| boasts | has |
+| features | has, includes |
+| represents | is |
 
-Giving inanimate things human verbs. Complaints don't "become" fixes. Bets don't "live or die." Decisions don't "emerge." A person does something to make those things happen. AI loves this because it avoids naming the actor.
+**Fix:** Just say "is" or "has."
 
-| Pattern | Problem |
-|---------|---------|
-| "a complaint becomes a fix" | The complaint did nothing. Someone fixed it. |
-| "a bet lives or dies in days" | Bets don't have lifespans. Someone kills the project or ships it. |
-| "the decision emerges" | Decisions don't emerge. Someone decides. |
-| "the culture shifts" | Cultures don't shift on their own. People change behavior. |
-| "the conversation moves toward" | Conversations don't move. Someone steers. |
-| "the data tells us" | Data sits there. Someone reads it and draws a conclusion. |
-| "the market rewards" | Markets don't reward. Buyers pay for things. |
+## Elegant Variation (Forced Synonym Cycling)
 
-**Instead:** Name the human. "The team fixed it that week" beats "the complaint becomes a fix." If no specific person fits, use "you" to put the reader in the seat.
+AI's repetition penalty forces it to cycle synonyms for the same referent within a single paragraph.
 
-## Narrator-from-a-Distance
+**Example:** "the platform" → "the service" → "the tool" → "the solution" — all in one paragraph.
 
-Floating above the scene instead of putting the reader in it.
+**Synonym groups detected:**
+- platform / service / tool / solution / product / system / application
+- method / approach / technique / strategy / framework / methodology
+- company / firm / organization / enterprise / corporation / business
+- person / individual / human / people / humans / individuals
 
-| Pattern | Problem |
-|---------|---------|
-| "Nobody designed this." | Disembodied observation |
-| "This happens because..." | Lecturer voice |
-| "This is why..." | Same |
-| "People tend to..." | Armchair sociologist |
+**Fix:** Pick one name and stick with it.
 
-**Instead:** Put the reader in the room. "You don't sit down one day and decide to..." beats "Nobody designed this."
+## False Ranges
 
-## Passive Voice
+"From X to Y" where X and Y aren't on a meaningful scale.
 
-Every sentence needs a subject doing something. Passive voice hides the actor and drains energy.
+**Examples:**
+- "From beginners to experts"
+- "From small startups to large enterprises"
+- "From simple tasks to complex challenges"
 
-| Pattern | Fix |
-|---------|-----|
-| "X was created" | Name who created it |
-| "It is believed that" | Name who believes it |
-| "Mistakes were made" | Name who made them |
-| "The decision was reached" | Name who decided |
+**Fix:** Pick your audience and commit. Don't try to include everyone.
 
-**Instead:** Find the actor. Put them at the front of the sentence.
+## "Not Only... But Also"
 
-## Sentence Starters to Avoid
+Mechanical additive structure used 2-5x more by AI than human writers.
 
-| Pattern | Fix |
-|---------|-----|
-| Sentences starting with What, When, Where, Which, Who, Why, How | Restructure. Lead with the subject or the verb. |
-| Paragraphs starting with "So" | Start with content |
-| Sentences starting with "Look," | Remove |
+**Fix:** Just list both things. "X and Y" or "X. Also, Y."
 
-Wh- openers become a crutch. "What makes this hard is..." becomes "The constraint is..." or better, name the specific constraint.
+## Patronizing Analogies
 
-## Rhythm Patterns
+AI assumes readers need metaphors for everything.
 
-| Pattern | Fix |
-|---------|-----|
-| Three-item lists | Use two items or one |
-| Questions answered immediately | Let questions breathe or cut them |
-| Every paragraph ends punchily | Vary endings |
-| Em-dashes | Remove. Use commas or periods. No em dashes at all. |
-| Staccato fragmentation | Don't stack short punchy sentences |
-| "Not always. Not perfectly." | Hedging disguised as reassurance |
+**Patterns:**
+- "Think of it as..."
+- "It's like a..."
+- "Imagine a..."
 
-## Word Patterns
+**Fix:** Use analogies sparingly. Only when they add genuine clarity.
 
-| Pattern | Problem |
-|---------|---------|
-| Lazy extremes (every, always, never, everyone, everybody, nobody) | False authority. Use specifics instead of sweeping claims. |
-| All adverbs (-ly words, "really," "just," "literally," "genuinely," "honestly," "simply," "actually") | Empty emphasis. See phrases.md for full list. |
+## False Balance / Both-Sides Hedge
+
+AI never commits to a position.
+
+**Patterns:**
+- "While X is true, Y is also important"
+- "Whether you're a beginner or an expert"
+
+**Fix:** Commit to a position. Say who this is for.
+
+## Conclusion Bloat
+
+AI never trusts the reader to remember what they just read. Multiple conclusion markers in the final paragraph.
+
+**Markers detected:**
+- "In conclusion" / "In summary" / "To sum up"
+- "As we've seen"
+- "The future looks bright"
+- "Exciting times lie ahead"
+- "embark on"
+
+**Fix:** End with one strong final point. Don't summarize.
+
+## Ghost Citations
+
+Unnamed sources that sound authoritative but cite nothing.
+
+**Patterns:**
+- "Studies show" / "Research suggests"
+- "Experts agree" / "According to experts"
+- "It has been shown" / "It has been proven"
+
+**Fix:** Name the study, expert, or report. If you can't, cut the claim.
+
+## -ing Sentence Openers
+
+Present participle openers at 2-5x the human rate.
+
+**Examples:**
+- "Highlighting the importance of..."
+- "Ensuring that..."
+- "Reflecting broader trends..."
+
+**Fix:** Vary sentence beginnings. Start with subjects, not participles.
+
+## Transition Word Overuse
+
+AI uses formal transitions at 3-5x the human rate.
+
+**Words flagged when density exceeds 1.5 per 100 words:**
+furthermore, moreover, additionally, nevertheless, consequently, in addition, on the other hand, however, therefore, thus, hence, accordingly, subsequently, meanwhile
+
+**Fix:** Replace with "also," "and," "but," "so" — or just start the next sentence.
+
+## Statistical Tells (Writing Rhythm)
+
+These aren't structural patterns but measurable properties:
+
+| Metric | AI typical | Human typical |
+|--------|-----------|--------------|
+| Sentence length stddev | < 3 words | 6-12 words |
+| Type-Token Ratio (100-word window) | < 0.5 | 0.6-0.8 |
+| Paragraph length stddev | < 5 words | 15-30 words |
+| Complexity variance | < 0.2 | 0.5-1.0 |
+| Em dashes per 400 words | 4-8 | 0-2 |
+
+## Absence Tells (What AI Never Does)
+
+Things human writers do that AI doesn't:
+- Sentence fragments for emphasis ("Not a chance.")
+- Profanity or raw language
+- Self-contradiction mid-piece
+- Inside jokes, obscure references
+- Made-up words, neologisms
+- Abrupt endings without wrap-up
+- Genuine uncertainty ("I don't know")
+- Tangents and digressions
+- Personal cost ("I wasted $2,000 learning this")
+- Sensory specificity ("the coffee was cold")

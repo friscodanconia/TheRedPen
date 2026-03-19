@@ -1,128 +1,213 @@
-# Phrases to Remove
+# AI Writing Patterns — Phrase Reference
+
+This file documents all AI-associated phrases detected by The Red Pen. Organized by category with model attribution, replacement suggestions, and explanations.
+
+## Tier 1 — Universal Red Flags
+
+These appear in virtually every AI detection database. Usage spiked dramatically after LLM adoption.
+
+| Phrase | Models | Replace with |
+|--------|--------|-------------|
+| delve | ChatGPT | explore, examine, dig into |
+| tapestry | ChatGPT | mix, combination, fabric |
+| testament | ChatGPT | proof, evidence, sign |
+| pivotal | ChatGPT | key, important, critical |
+| underscore | ChatGPT, Claude | show, highlight, reveal |
+| intricate / intricacies | ChatGPT | complex, detailed, involved |
+| meticulous | ChatGPT | careful, thorough, precise |
+| crucial | ChatGPT, Claude | important, key, essential |
+| landscape (abstract) | ChatGPT | field, area, world |
+| foster | ChatGPT | encourage, support, build |
+| vibrant | ChatGPT | lively, active, rich |
+| comprehensive | ChatGPT, Chinese LLM | complete, thorough, full |
+| showcase | ChatGPT | show, display, demonstrate |
+| robust | ChatGPT | strong, solid, reliable |
+| seamless | ChatGPT | smooth, easy, simple |
+| nuanced | ChatGPT, Claude | subtle, complex, layered |
+| realm | ChatGPT, DeepSeek | area, field, domain |
+| enhance | ChatGPT | improve, boost, strengthen |
+| innovative | ChatGPT | new, creative, original |
+| groundbreaking | ChatGPT | new, first, pioneering |
+| multifaceted | ChatGPT | complex, varied, many-sided |
+| leverage | ChatGPT | use, apply, take advantage of |
+| holistic | ChatGPT | complete, whole, overall |
+| transformative | ChatGPT | powerful, significant |
+| embark | ChatGPT | start, begin, set out |
+
+## Tier 2 — Strong Signals
+
+Appear in 3+ databases with elevated frequency in AI text.
+
+| Phrase | Models | Replace with |
+|--------|--------|-------------|
+| navigate | ChatGPT | handle, manage, deal with |
+| bolster | ChatGPT | strengthen, support, boost |
+| garner | ChatGPT | get, earn, attract |
+| enduring | ChatGPT | lasting, permanent |
+| interplay | ChatGPT | interaction, relationship |
+| beacon | ChatGPT | example, guide, light |
+| harness | ChatGPT | use, apply, channel |
+| streamline | ChatGPT | simplify, speed up |
+| commence | ChatGPT | start, begin |
+| facilitate | ChatGPT | help, enable, make possible |
+| utilize | ChatGPT | use |
+| profound | ChatGPT, Chinese LLM | deep, significant, major |
+| renowned | ChatGPT | famous, well-known |
+| encompass | ChatGPT | include, cover, span |
+| exemplify | ChatGPT | show, demonstrate |
+| cultivate | ChatGPT | build, develop, grow |
+| paramount | ChatGPT | most important, essential |
+| noteworthy | ChatGPT | notable, interesting |
+| versatile | ChatGPT | flexible, adaptable |
+| commendable | ChatGPT | impressive, good |
+| spearhead | ChatGPT | lead, drive, start |
+| elucidate | ChatGPT | explain, clarify |
+| burgeoning | ChatGPT | growing, expanding |
+| propel | ChatGPT | drive, push, move forward |
+| synergy | ChatGPT | cooperation, combined effect |
+| myriad | ChatGPT | many, countless |
+| plethora | ChatGPT | many, lots of |
+| resonate | ChatGPT | connect, appeal, ring true |
+| trajectory | ChatGPT | path, direction, trend |
+| paradigm | ChatGPT | model, approach, way of thinking |
+| proliferation | ChatGPT | spread, growth, increase |
+| catalyze | ChatGPT | trigger, spark, start |
+| imperative | ChatGPT | essential, necessary, urgent |
+| albeit | ChatGPT | although, though |
+| arguably | ChatGPT, Claude | (just argue it) |
+| overarching | ChatGPT | main, overall, broad |
+| unparalleled | ChatGPT | unique, exceptional |
+| foundational | ChatGPT | basic, fundamental, core |
+| undeniable | ChatGPT | clear, obvious, strong |
+
+## Tier 3 — Moderate Signals
+
+Appear in 1-2 databases, still elevated in AI text.
+
+| Phrase | Models | Replace with |
+|--------|--------|-------------|
+| gossamer | ChatGPT | thin, delicate, light |
+| labyrinth | ChatGPT | maze, tangle, complexity |
+| enigma | ChatGPT | mystery, puzzle |
+| symphony | ChatGPT | combination, blend |
+| tableau | ChatGPT | scene, picture |
+| confluence | ChatGPT | meeting, combination |
+| ephemeral | ChatGPT | brief, temporary, fleeting |
+| luminous | ChatGPT | bright, glowing |
+| palpable | ChatGPT | obvious, strong, felt |
+| aforementioned | ChatGPT | this, the, that |
+| notwithstanding | ChatGPT | despite, regardless |
+| henceforth | ChatGPT | from now on |
+| whilst | ChatGPT, Kimi | while |
+
+## Model-Specific Patterns
+
+### Claude Hedging
+| Phrase | Replace with |
+|--------|-------------|
+| it's worth noting | (just state the point) |
+| while this may vary | (cut or be specific) |
+| in many cases | (name the cases or cut) |
+| generally speaking | (cut — just speak) |
+| i should note | (just note it) |
+| it's important to consider | (consider it directly) |
+| it's important to note | (just state it) |
+
+### DeepSeek
+| Phrase | Replace with |
+|--------|-------------|
+| in the realm of | in |
+| unlocking | enabling, finding |
+| unveiling | showing, revealing |
+| paving the way | enabling, making possible |
+
+### Chinese LLMs (shared patterns)
+| Phrase | Replace with |
+|--------|-------------|
+| play an important role | matter, help with |
+| make great efforts | work hard, try |
+| at the same time | also, meanwhile |
+| harmonious | balanced, smooth |
+
+## Ghost Citations
+
+Unnamed sources that should be cited or cut.
+
+- "studies show" / "research suggests"
+- "experts agree" / "according to experts"
+- "it has been shown" / "industry reports"
+- "some critics argue" / "several publications"
+- "observers have cited"
 
 ## Throat-Clearing Openers
 
-Remove these announcement phrases. State the content directly.
+Cut entirely. Start with the point.
 
-- "Here's the thing:"
-- "Here's what [X]"
-- "Here's this [X]"
-- "Here's that [X]"
-- "Here's why [X]"
-- "The uncomfortable truth is"
-- "It turns out"
-- "The real [X] is"
-- "Let me be clear"
-- "The truth is,"
-- "I'll say it again:"
-- "I'm going to be honest"
-- "Can we talk about"
-- "Here's what I find interesting"
-- "Here's the problem though"
-
-Any "here's what/this/that" construction is throat-clearing before the point. Cut it and state the point.
+- "here's the thing"
+- "the uncomfortable truth is"
+- "in today's fast-paced world"
+- "in the ever-evolving landscape of"
+- "in an era where"
+- "in today's digital age"
+- "let me be clear"
+- "the truth is"
+- "can we talk about"
 
 ## Emphasis Crutches
 
-These add no meaning. Delete them.
+Delete. Let content speak for itself.
 
-- "Full stop." / "Period."
-- "Let that sink in."
-- "This matters because"
-- "Make no mistake"
-- "Here's why that matters"
+- "full stop." / "period."
+- "let that sink in"
+- "this matters because"
+- "make no mistake"
+- "here's why that matters"
 
-## Business Jargon
+## Chatbot Artifacts
 
-Replace with plain language.
+Dead giveaways of AI-generated text. Remove immediately.
 
-| Avoid | Use instead |
-|-------|-------------|
-| Navigate (challenges) | Handle, address |
-| Unpack (analysis) | Explain, examine |
-| Lean into | Accept, embrace |
-| Landscape (context) | Situation, field |
-| Game-changer | Significant, important |
-| Double down | Commit, increase |
-| Deep dive | Analysis, examination |
-| Take a step back | Reconsider |
-| Moving forward | Next, from now |
-| Circle back | Return to, revisit |
-| On the same page | Aligned, agreed |
+- "i hope this helps"
+- "of course!" / "certainly!"
+- "great question!"
+- "that's an excellent point"
+- "would you like me to"
+- "let me know if"
+- "as of my last [training]"
 
-## Adverbs
+## Filler Phrases
 
-Kill all adverbs. No -ly words. No softeners, no intensifiers, no hedges.
+Replace with shorter alternatives.
 
-Specific offenders:
+| Avoid | Use |
+|-------|-----|
+| in order to | to |
+| due to the fact that | because |
+| at this point in time | now |
+| in the event that | if |
+| has the ability to | can |
+| it is important to note that | (cut) |
 
-- "really"
-- "just"
-- "literally"
-- "genuinely"
-- "honestly"
-- "simply"
-- "actually"
-- "deeply"
-- "truly"
-- "fundamentally"
-- "inherently"
-- "inevitably"
-- "interestingly"
-- "importantly"
-- "crucially"
+## Significance Inflation (IsGPT multipliers)
 
-Also cut these filler phrases:
+| Phrase | Multiplier vs human text |
+|--------|-------------------------|
+| provide valuable insights | 902x |
+| left an indelible mark | 317x |
+| play a significant role in shaping | 207x |
+| unwavering commitment | 202x |
 
-- "At its core"
-- "In today's [X]"
-- "It's worth noting"
-- "At the end of the day"
-- "When it comes to"
-- "In a world where"
-- "The reality is"
+## Sources
 
-## Meta-Commentary
-
-Remove self-referential asides. The essay should move, not announce its own structure.
-
-- "Hint:"
-- "Plot twist:" / "Spoiler:"
-- "You already know this, but"
-- "But that's another post"
-- "X is a feature, not a bug"
-- "Dressed up as"
-- "The rest of this essay explains..."
-- "Let me walk you through..."
-- "In this section, we'll..."
-- "As we'll see..."
-- "I want to explore..."
-
-## Performative Emphasis
-
-False intimacy or manufactured sincerity:
-
-- "creeps in"
-- "I promise"
-- "They exist, I promise"
-
-## Telling Instead of Showing
-
-Announcing difficulty or significance rather than demonstrating it:
-
-- "This is genuinely hard"
-- "This is what leadership actually looks like"
-- "This is what X actually looks like"
-- "actually matters"
-
-## Vague Declaratives
-
-Sentences that announce importance without naming the specific thing. Kill these.
-
-- "The reasons are structural"
-- "The implications are significant"
-- "This is the deepest problem"
-- "The stakes are high"
-- "The consequences are real"
-
-If a sentence says something is important/deep/structural without showing the specific thing, cut it or replace it with the specific thing.
+- Original stop-slop (Hardik Pandya) — 49 phrases, 7 structures
+- Humanizer skill (GitHub/blader) — 24 pattern categories
+- Becky Tuch / Lit Mag News — 15 creative writing tells
+- tropes.fyi — 32 named AI writing tropes
+- Anti-Slop-Writing (GitHub) — 500+ vocabulary items
+- GPTZero AI Vocabulary — 50+ phrases
+- IsGPT.org — 56 phrases with multipliers
+- EQBench Slop Score — 1,650 word list
+- Pangram Labs guide — 100+ nouns, 70+ verbs
+- FSU "delve" paper — 21 focal words
+- SLOP_Detector (GitHub) — 209 fiction patterns
+- Wikipedia: Signs of AI Writing
