@@ -347,6 +347,38 @@ const PHRASE_DB = [
   // Model-specific 2026 patterns
   { text: "embrace", tier: 2, category: "vocabulary", models: ["chatgpt"], replacement: "accept, try, adopt", explanation: "2026 AI tell. Overused motivational verb. 'Try' or 'adopt' are more honest." },
   { text: "journey", tier: 2, category: "vocabulary", models: ["chatgpt"], replacement: "experience, path, process", explanation: "2026 AI tell. LinkedIn's most overused metaphor." },
+
+  // --- 2026 bigram tells (from round 2 differential analysis) ---
+  // These are 2-word patterns with 28+ AI occurrences and 0-1 human occurrences
+
+  // AI abstraction habits
+  { text: "the importance of", tier: 1, category: "filler", models: ["chatgpt", "claude", "gemini", "llama"], replacement: "[name the specific thing that matters]", explanation: "2026 AI tell. 41x AI, 0x human. AI abstracts everything into 'the importance of X.' Name the specific thing instead." },
+  { text: "a culture of", tier: 2, category: "filler", models: ["chatgpt", "claude", "gemini"], replacement: "[describe the actual behavior]", explanation: "2026 AI tell. 33x AI, 0x human. AI loves abstract 'culture of X' framing. Describe the actual behavior." },
+  { text: "opportunity to", tier: 2, category: "filler", models: ["chatgpt", "claude", "gemini"], replacement: "chance to, way to", explanation: "2026 AI tell. 32x AI, 0x human. Corporate filler. 'Chance to' is more direct." },
+
+  // AI false solidarity
+  { text: "we've all", tier: 1, category: "filler", models: ["chatgpt", "claude", "gemini", "llama"], replacement: "[be specific about who]", explanation: "2026 AI tell. 38x AI, 0x human. AI's false solidarity opener. No, we haven't all. Be specific about who." },
+  { text: "we often", tier: 2, category: "filler", models: ["chatgpt", "claude", "gemini"], replacement: "[name who specifically]", explanation: "2026 AI tell. 29x AI, 1x human. AI's inclusive generalization. Name the actual people." },
+
+  // AI emphasis fillers
+  { text: "what truly", tier: 1, category: "inflation", models: ["chatgpt", "claude", "gemini", "llama"], replacement: "[cut 'truly' and just state it]", explanation: "2026 AI tell. 32x AI, 0x human. 'Truly' is AI emphasis filler. Cut it." },
+  { text: "that truly", tier: 1, category: "inflation", models: ["chatgpt", "claude", "gemini", "llama"], replacement: "[cut 'truly']", explanation: "2026 AI tell. 32x AI, 0x human. Same pattern. 'Truly' adds nothing." },
+
+  // AI binary contrast (new form)
+  { text: "isn't about", tier: 1, category: "emphasis", models: ["chatgpt", "claude", "gemini", "llama"], replacement: "[say what it IS about]", explanation: "2026 AI tell. 35x AI, 0x human. The setup for 'it's about...' Binary contrast pattern." },
+
+  // AI corporate verbs
+  { text: "align with", tier: 2, category: "vocabulary", models: ["chatgpt", "claude", "gemini"], replacement: "match, fit, support", explanation: "2026 AI tell. 36x AI, 0x human. Corporate AI verb. 'Match' or 'fit' are clearer." },
+  { text: "invest in", tier: 2, category: "vocabulary", models: ["chatgpt", "claude", "gemini"], replacement: "spend time on, put effort into", explanation: "2026 AI tell. 37x AI, 1x human. AI motivational framing. Be specific about what you're actually doing." },
+  { text: "focusing on", tier: 2, category: "vocabulary", models: ["chatgpt", "claude", "gemini"], replacement: "working on, doing", explanation: "2026 AI tell. 34x AI, 1x human. AI gerund habit. 'Working on' is more concrete." },
+  { text: "lead to", tier: 2, category: "filler", models: ["chatgpt", "claude", "gemini", "llama"], replacement: "cause, create, result in", explanation: "2026 AI tell. 49x AI, 0x human. AI's hedged causation. Name the actual cause and effect." },
+  { text: "can lead to", tier: 2, category: "filler", models: ["chatgpt", "claude", "gemini"], replacement: "causes, creates", explanation: "2026 AI tell. 35x AI, 0x human. Double hedge. Drop 'can' and 'lead to' — state what happens." },
+
+  // AI engagement patterns
+  { text: "what's one", tier: 1, category: "engagement_bait", models: ["chatgpt", "gemini", "llama"], replacement: "[cut it]", explanation: "2026 AI tell. 28x AI, 0x human. AI's favorite engagement question format: 'What's one thing you...' Nobody asks this naturally." },
+
+  // AI preamble leak
+  { text: "okay, here's", tier: 1, category: "filler", models: ["chatgpt", "gemini", "llama"], replacement: "[cut it — just start]", explanation: "2026 AI tell. 35x AI, 0x human. The model's preamble leaking into the output. Cut it." },
 ];
 
 // Build lookup for quick searching
