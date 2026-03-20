@@ -1308,33 +1308,27 @@ function applyFix(phraseText, replacement) {
 
   // Use first suggested replacement (before comma)
   const firstReplacement = replacement.replace(/^\[/, "").replace(/\]$/, "").split(",")[0].trim();
-  if (!firstReplacement || firstReplacement.startsWith("cut") || firstReplacement.startsWith("just") || firstReplacement.startsWith("end") || firstReplacement.startsWith("let") || firstReplacement.startsWith("say") || firstReplacement.startsWith("weave") || firstReplacement.startsWith("name") || firstReplacement.startsWith("rephrase") || firstReplacement.startsWith("explain") || firstReplacement.startsWith("describe")) {
-    // Deletion fix — remove the phrase
-    const before = text.slice(0, idx);
-    const after = text.slice(idx + target.length);
-    // Clean up extra spaces
-    editor.value = (before + after).replace(/  +/g, " ").replace(/^ /gm, "");
-  } else {
-    // Substitution fix — match original casing
-    const original = text.slice(idx, idx + target.length);
-    let fixed = firstReplacement;
-    if (original[0] === original[0].toUpperCase()) {
-      fixed = fixed[0].toUpperCase() + fixed.slice(1);
-    }
-    editor.value = text.slice(0, idx) + fixed + text.slice(idx + target.length);
+  if (!firstReplacement) return;
+
+  // Substitution fix — match original casing
+  const original = text.slice(idx, idx + target.length);
+  let fixed = firstReplacement;
+  if (original[0] === original[0].toUpperCase()) {
+    fixed = fixed[0].toUpperCase() + fixed.slice(1);
   }
+  editor.value = text.slice(0, idx) + fixed + text.slice(idx + target.length);
 
   editor.dispatchEvent(new Event("input"));
   runAnalysis();
 }
 
-// Render a fix button for a phrase hit
+// Render a fix button for a phrase hit — only for substitutions, not deletions
 function renderFixButton(hit) {
   if (!hit.replacement) return "";
   const clean = hit.replacement.replace(/^\[/, "").replace(/\]$/, "");
   const isDelete = clean.startsWith("cut") || clean.startsWith("just") || clean.startsWith("end") || clean.startsWith("let") || clean.startsWith("say") || clean.startsWith("weave") || clean.startsWith("name") || clean.startsWith("rephrase") || clean.startsWith("explain") || clean.startsWith("describe");
-  const label = isDelete ? "Remove" : "Fix";
-  return ` <button class="btn-fix" onclick="applyFix('${hit.text.replace(/'/g, "\\'")}', '${hit.replacement.replace(/'/g, "\\'")}')">${label}</button>`;
+  if (isDelete) return "";
+  return ` <button class="btn-fix" onclick="applyFix('${hit.text.replace(/'/g, "\\'")}', '${hit.replacement.replace(/'/g, "\\'")}')">Fix</button>`;
 }
 
 // ============================================================

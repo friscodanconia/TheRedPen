@@ -66,7 +66,7 @@ Single number summarizing how AI your post sounds. Weighted composite of phrase 
 
 ### Click-to-Fix
 
-Every detected phrase has a **Fix** or **Remove** button. Click it to apply the replacement directly in the editor and re-score instantly. No generative AI — just deterministic string replacements.
+Phrases with clear substitutions (e.g. "leverage" → "use") have a **Fix** button that applies the replacement directly in the editor and re-scores instantly. No generative AI — just deterministic string replacement. Phrases that need rewriting rather than swapping show suggestions instead.
 
 ## Quick start
 
