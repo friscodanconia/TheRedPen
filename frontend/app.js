@@ -342,7 +342,6 @@ const PHRASE_DB = [
   { text: "thrilled to share", tier: 2, category: "humble_brag", models: ["chatgpt", "claude"], replacement: "[just share it]", explanation: "2026 AI tell. 10x AI, 0x human." },
 
   // Additional 2026 patterns
-  { text: "actually", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it — if it's actual, just state it]", explanation: "2026 AI tell. AI hedges with 'actually' to sound conversational. Cut it." },
   { text: "biggest", tier: 2, category: "inflation", models: ["claude"], replacement: "main, top, most important", explanation: "2026 AI tell. AI dramatizes with superlatives. 'Main' or 'most important' are more measured." },
 
   // Model-specific 2026 patterns
