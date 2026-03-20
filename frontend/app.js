@@ -1269,7 +1269,7 @@ function runAnalysis() {
 
   // Summary bar — 4 items
   document.getElementById("total-issues").textContent = result.totalIssues;
-  document.querySelector("#total-issues + .stat-label").textContent = `AI pattern${result.totalIssues === 1 ? "" : "s"} found`;
+  document.querySelector("#total-issues + .stat-label").textContent = `Pattern${result.totalIssues === 1 ? "" : "s"} found`;
 
   const worstEl = document.getElementById("worst-category");
   if (result.worstCategory) {
@@ -1298,7 +1298,7 @@ function runAnalysis() {
 
   const engBaitEl = document.getElementById("engagement-bait-count");
   engBaitEl.querySelector(".stat-number").textContent = result.engagementBaitCount;
-  engBaitEl.querySelector(".stat-label").textContent = "Engagement bait";
+  engBaitEl.querySelector(".stat-label").textContent = "Bait phrases";
 
   // Render 4 tab panels
   renderBuzzwordsPanel(result);
