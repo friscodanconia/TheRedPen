@@ -1,72 +1,79 @@
 ---
 name: the-red-pen
-description: Detect and remove AI writing patterns from prose. Use when drafting, editing, or reviewing text to eliminate predictable AI tells across vocabulary, structure, rhythm, and formatting.
+description: Detect and remove AI writing patterns from LinkedIn posts. Use when drafting, editing, or reviewing LinkedIn content to eliminate AI tells across vocabulary, structure, rhythm, and formatting.
 metadata:
-  trigger: Writing prose, editing drafts, reviewing content for AI patterns, checking for AI tells
-  author: Originally by Hardik Pandya (stop-slop), rebuilt as The Red Pen
+  trigger: Writing LinkedIn posts, editing LinkedIn drafts, reviewing content for AI patterns, checking for LinkedIn AI cliches
+  author: Originally by Hardik Pandya (stop-slop), rebuilt as The Red Pen LinkedIn Edition
 ---
 
-# The Red Pen
+# The Red Pen — LinkedIn Edition
 
-Detect and remove AI writing patterns from prose. Based on 320+ catalogued AI tells across 10+ model families.
+Detect and remove AI writing patterns from LinkedIn posts. 232 catalogued AI tells focused on what actually appears on LinkedIn.
 
 ## Core Rules
 
-1. **Cut AI-favorite words.** Remove tier-1 red flags (delve, tapestry, multifaceted, robust, seamless, etc.) and tier-2 signals. Replace with plain alternatives. See [references/phrases.md](references/phrases.md).
+1. **Cut AI-favorite words.** Remove tier-1 red flags (delve, leverage, transformative, robust, seamless, etc.) and tier-2 signals. Replace with plain alternatives. See [references/phrases.md](references/phrases.md).
 
-2. **Remove engagement bait.** Cut "has anyone else noticed", "would love to hear", "unpopular opinion", "agree or disagree" and similar prompts that farm interaction instead of making a point.
+2. **Remove engagement bait.** Cut "agree?", "drop a comment", "follow me for more", "tag someone who", "save this for later" — anything that farms interaction instead of making a point.
 
-3. **Eliminate ghost citations.** "Studies show" and "experts agree" without naming the source. Name it or cut it.
+3. **Kill humble brags.** Replace "I'm humbled to announce" with just the announcement. "Honored to share" → just share. "Still can't believe" → you can believe it, you posted about it.
 
-4. **Break formulaic structures.** No binary contrasts ("not X — it's Y"), negative listings, dramatic fragments, rule-of-three abuse, copula avoidance ("serves as" → "is"), or conclusion bloat. See [references/structures.md](references/structures.md).
+4. **Avoid thought-leader framing.** No "we need to talk about", "read that again", "hard truth", "nobody tells you this." State your point directly.
 
-5. **Use active voice with human subjects.** No passive constructions. No inanimate objects performing human actions ("the complaint becomes a fix" → "the team fixed it").
+5. **Skip journey narratives.** No "here's my story", "fast forward to today", "the lesson?" Tell the story without the template.
 
-6. **Be concrete.** No vague declaratives ("The implications are significant"). Name the specific thing. Include proper nouns, numbers, dates, quotes, and sensory details.
+6. **Break formulaic structures.** No binary contrasts ("not X — it's Y"), negative listings, broetry (single-sentence paragraphs stacked vertically), or motivational arcs (struggle → transformation → lesson).
 
-7. **Vary rhythm.** Mix sentence lengths (3 words to 40+). Vary paragraph lengths. Avoid uniform complexity. Watch em-dash overuse.
+7. **Limit hashtags.** 3-5 maximum. More is spam.
 
-8. **Cut padding.** Remove treadmill markers ("in other words", "as mentioned earlier"). Don't restate what you already said.
+8. **Be concrete.** No vague declaratives. Include proper nouns, numbers, dates, quotes.
 
-9. **Remove chatbot artifacts.** Delete "I hope this helps", "great question!", knowledge-cutoff disclaimers, and other conversational AI leftovers.
+9. **Vary rhythm.** Mix sentence lengths. Vary paragraph sizes. Watch em-dash overuse.
 
-10. **Skip meta-commentary.** No "plot twist:", "here's where it gets interesting", or "that's a story for another day." Let the content speak.
+10. **Cut padding.** Remove treadmill markers, throat-clearing openers, and conclusion bloat. LinkedIn posts don't need summaries.
 
 ## Quick Checks
 
-Before delivering prose, verify:
+Before posting on LinkedIn, verify:
 
 - Any words from the AI vocabulary list? Replace them.
-- Any ghost citations ("studies show")? Name the source or cut.
-- Any engagement bait ("thoughts?", "who else")? Cut it.
+- Any engagement bait ("thoughts?", "agree?")? Cut it.
+- Any humble brags ("humbled to announce")? Just announce it.
 - Any "not X — it's Y" contrasts? State Y directly.
-- Any emoji used as section headers? Remove.
-- Numbered/bulleted list where prose would work? Convert to narrative.
+- More than 5 hashtags? Pick your top 3.
+- Mostly single-sentence paragraphs (broetry)? Write real paragraphs.
+- Dramatic short opener ("I quit my job.")? Consider whether it's earned.
 - Three+ formal transitions (furthermore, moreover)? Replace with "also" or just start the sentence.
-- Any chatbot leftovers ("I hope this helps")? Delete immediately.
 - All paragraphs roughly the same length? Vary them.
 - Any paragraph with zero concrete details? Add specifics.
-- Conclusion that summarizes everything? Cut the summary, end on a strong point.
+- Conclusion that summarizes? Cut it, end on your strongest point.
 
 ## Detection Layers
 
 | Layer | What it catches |
 |-------|----------------|
-| AI Favorite Words | 320+ model-tagged phrases across 15 categories |
-| Model Fingerprinting | ChatGPT, Claude, DeepSeek, Chinese LLM, Gemini attribution |
-| Writing Rhythm | Sentence variance, vocabulary diversity, paragraph uniformity |
-| Cliche Structures | 17 structural patterns (binary contrasts, fragments, etc.) |
-| Repetition & Padding | Paragraph overlap, treadmill markers |
-| Vague vs Specific | Concrete details vs. abstract filler per paragraph |
+| AI Buzzwords | 149 entries: vocabulary, filler, phrases, transitions, inflation |
+| LinkedIn Cliches | 83 entries: engagement bait, humble brags, thought leader, journey narrative, throat-clearing, emphasis, meta, performative, treadmill, conclusion bloat |
+| Formatting Tricks | Broetry, hook/payoff, hashtag spam, emoji formatting, numbered lists, fragments |
+| Writing Quality | Sentence rhythm, paragraph shape, broetry score, em dashes, binary contrasts, negative listings, motivational arc, vagueness, paragraph overlap |
+
+## AI Score
+
+0-100 scale. 0 = sounds human, 100 = pure AI slop. Weighted: phrase density (40%), structural hits (20%), broetry (15%), engagement bait (15%), rhythm (10%).
 
 ## Frontend
 
-Open `frontend/index.html` for the interactive detector. Zero dependencies, runs entirely in the browser.
+Open `frontend/index.html` for the interactive detector. Zero dependencies, runs in the browser.
+
+## Chrome Extension
+
+Install from `extension/` directory for real-time scoring inside LinkedIn compose boxes.
 
 ## References
 
-- [references/phrases.md](references/phrases.md) — Full phrase database with model tags and sources
-- [references/structures.md](references/structures.md) — Structural patterns and statistical tells
+- [references/phrases.md](references/phrases.md) — Full phrase database with 13 sources
+- [references/structures.md](references/structures.md) — Structural pattern reference
+- [references/examples.md](references/examples.md) — Before/after examples
 
 ## License
 

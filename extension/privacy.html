@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — The Red Pen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #FAF7F2;
+      color: #2D2A26;
+      line-height: 1.7;
+      padding: 48px 24px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 40px;
+    }
+
+    header a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    h1 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #C13628;
+      margin-bottom: 4px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #8B8580;
+      letter-spacing: 0.02em;
+    }
+
+    h2 {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin: 36px 0 12px;
+      color: #2D2A26;
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 16px;
+      color: #3D3A36;
+    }
+
+    ul {
+      margin: 0 0 20px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul li {
+      font-size: 15px;
+      color: #3D3A36;
+      padding: 8px 0 8px 24px;
+      position: relative;
+      border-bottom: 1px solid rgba(193, 54, 40, 0.08);
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 8px;
+      height: 8px;
+      background: #C13628;
+      border-radius: 50%;
+    }
+
+    a {
+      color: #C13628;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(193, 54, 40, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: #C13628;
+    }
+
+    .highlight-box {
+      background: rgba(193, 54, 40, 0.06);
+      border-left: 3px solid #C13628;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-weight: 500;
+      color: #2D2A26;
+    }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(45, 42, 38, 0.1);
+      font-size: 13px;
+      color: #8B8580;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #8B8580;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="https://github.com/friscodanconia/TheRedPen">
+      <h1>The Red Pen</h1>
+    </a>
+    <div class="tagline">Privacy Policy</div>
+  </header>
+
+  <div class="highlight-box">
+    <p>The Red Pen does not collect, store, or transmit any of your data. Everything happens locally in your browser.</p>
+  </div>
+
+  <h2>What we collect</h2>
+  <p>Nothing. Zero. The Red Pen processes all text entirely within your browser using local JavaScript. Your writing never leaves your device.</p>
+
+  <h2>What we don't do</h2>
+  <ul>
+    <li>No data is collected, stored, or sent to any server</li>
+    <li>No analytics or tracking scripts of any kind</li>
+    <li>No cookies or local storage used for tracking</li>
+    <li>No third-party services or SDKs</li>
+    <li>No accounts, sign-ups, or authentication required</li>
+    <li>No ads, no monetization of your data</li>
+  </ul>
+
+  <h2>How it works</h2>
+  <p>The Red Pen runs a lightweight text analysis engine directly in your browser tab. When you type in a LinkedIn post editor, the extension reads the text from the DOM, analyzes writing patterns locally, and displays a score. The text is never copied, cached, or transmitted anywhere.</p>
+
+  <h2>Permissions</h2>
+  <p>The extension requests no special browser permissions beyond running on linkedin.com pages. It uses only a content script that activates on LinkedIn to detect the post editor and provide real-time feedback.</p>
+
+  <h2>Open source</h2>
+  <p>The Red Pen is fully open source. You can inspect every line of code to verify these privacy claims yourself.</p>
+  <p>Source code: <a href="https://github.com/friscodanconia/TheRedPen">github.com/friscodanconia/TheRedPen</a></p>
+
+  <h2>Contact</h2>
+  <p>Questions or concerns? Open an issue on <a href="https://github.com/friscodanconia/TheRedPen/issues">GitHub</a>.</p>
+
+  <footer>
+    <p>Last updated: March 2026</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "The Red Pen — LinkedIn AI Detector",
+  "version": "1.0.0",
+  "description": "Detects AI writing patterns in your LinkedIn posts as you type.",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/*"],
+      "js": ["engine.js", "content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

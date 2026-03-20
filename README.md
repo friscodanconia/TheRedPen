@@ -1,106 +1,160 @@
-# The Red Pen
+# The Red Pen — LinkedIn Edition
 
-See the AI patterns in your writing. Fix them before anyone else notices.
+Your LinkedIn post sounds like AI wrote it. Let's fix that.
 
-## What this is
+A free, client-side tool that detects AI writing patterns in LinkedIn posts. Paste your post, get an AI score from 0-100, fix the issues with one click. Also available as a Chrome extension that scores your posts in real-time as you type.
 
-A free, client-side writing tool that detects AI tells across 10+ model families. Paste your text, get instant feedback — no backend, no API, no cost. Open `frontend/index.html` and it works.
+No backend. No API. No data leaves your browser.
 
-Not a cheating detector. A self-editing tool for writers who want their prose to sound human.
-
-**Forked from [stop-slop](https://github.com/hardikpandya/stop-slop) by Hardik Pandya** and rebuilt as a comprehensive detection frontend.
+**Built on [stop-slop](https://github.com/hardikpandya/stop-slop) by [Hardik Pandya](https://hvpandya.com)**, rebuilt and focused on LinkedIn.
 
 ## What it catches
 
-### 6 Detection Layers
+### 232 Phrase Patterns (from 13 research sources)
 
-**1. AI Favorite Words** — 320+ model-tagged entries across 3 tiers. Each word/phrase includes which AI model uses it most, a plain-language explanation, and a suggested replacement.
+| Category | Count | Examples |
+|----------|-------|----------|
+| AI Vocabulary | 107 | delve, leverage, transformative, robust, seamless |
+| Engagement Bait | 19 | "agree?", "drop a comment", "follow me for more" |
+| Humble Brags | 10 | "i'm humbled to announce", "honored to share", "pinch me moment" |
+| Thought Leader Cliches | 10 | "we need to talk about", "read that again", "hard truth" |
+| Journey Narratives | 10 | "here's my story", "fast forward to today", "the lesson?" |
+| Filler Phrases | 18 | "in order to" (→ to), "due to the fact that" (→ because) |
+| Throat-clearing | 12 | "in today's fast-paced world", "in the ever-evolving landscape" |
+| Transitions | 7 | furthermore, moreover, additionally |
+| Inflation | 9 | "provide valuable insights" (902x human rate), "unwavering commitment" (202x) |
+| Emphasis Crutches | 6 | "let that sink in", "full stop", "make no mistake" |
+| + 5 more categories | 24 | meta-commentary, performative depth, treadmill markers, conclusion bloat |
 
-**2. Model Fingerprinting** — Aggregates model-specific markers (ChatGPT, Claude, DeepSeek, Chinese LLMs, Gemini, Kimi) and attributes when 3+ patterns match a single model. Shows evidence, not verdicts.
+### 13 Structural Detectors
 
-**3. Writing Rhythm** — Statistical analysis of sentence length variance, vocabulary diversity (Type-Token Ratio), paragraph shape uniformity, and complexity range. Shown as visual bars with "human range" shaded in green.
+- **Broetry** — sequences of single-sentence paragraphs (LinkedIn scroll-bait)
+- **Hook/Payoff** — dramatic short opener designed as a scroll-stopper
+- **Hashtag Spam** — more than 5 hashtags
+- **Motivational Arc** — struggle → transformation → lesson template
+- **Binary Contrasts** — "not X — it's Y" (including cross-paragraph)
+- **Negative Listings** — "Not a product. Not a company. A movement."
+- **Dramatic Fragments** — short staccato sentences for manufactured drama
+- **Numbered Lists** — structured lists where prose would be stronger
+- **Emoji Formatting** — emoji used as section markers
+- **Conclusion Bloat** — "in conclusion", "the future looks bright"
+- **-ing Openers** — present participle sentence starts at 2-5x human rate
+- **Transition Density** — formal transitions at 3-5x human rate
+- **Not Only But Also** — mechanical additive structure
 
-**4. Cliche Structures** — 17 structural detectors including binary contrasts ("not X — it's Y"), negative listings, dramatic fragments, rule-of-three abuse, copula avoidance, elegant variation, false ranges, conclusion bloat, ghost citations, emoji formatting, numbered list detection, engagement bait, and more.
+### Writing Quality Analysis
 
-**5. Repetition & Padding** — Paragraph-level overlap detection finds paragraphs that restate earlier content. Treadmill marker phrases ("in other words", "as mentioned earlier") flagged separately.
+- **Sentence rhythm** — variance in sentence length
+- **Paragraph shape** — uniformity of paragraph sizes
+- **Broetry score** — ratio of single-sentence paragraphs
+- **Em dash usage** — AI uses em dashes at 4-8x human rate
+- **Vagueness detection** — flags paragraphs with zero concrete details
+- **Paragraph overlap** — catches restated content
 
-**6. Vague vs Specific** — Counts proper nouns, numbers, dates vs. vague abstractions per paragraph. Flags high-abstraction paragraphs with zero concrete details.
+### AI Score (0-100)
 
-### Phrase Categories
+Single number summarizing how AI your post sounds. Weighted composite of phrase density (40%), structural hits (20%), broetry ratio (15%), engagement bait (15%), and rhythm issues (10%).
 
-| Category | Examples |
-|----------|----------|
-| AI Vocabulary | delve, tapestry, multifaceted, robust, seamless |
-| Ghost Citations | "studies show", "experts agree" (no named source) |
-| Throat-clearing | "in today's fast-paced world", "here's the thing" |
-| Engagement Bait | "has anyone else noticed", "would love to hear", "unpopular opinion" |
-| Chatbot Artifacts | "I hope this helps", "great question!", "as of my last training" |
-| Conclusion Bloat | "in conclusion", "the future looks bright", "exciting times lie ahead" |
-| Filler Phrases | "in order to" (→ to), "due to the fact that" (→ because) |
-| Meta-commentary | "plot twist:", "but that's another post", "story for another day" |
-| Significance Inflation | "provide valuable insights" (902x human rate), "indelible mark" (317x) |
+| Score | Verdict |
+|-------|---------|
+| 0-10 | Sounds human |
+| 11-25 | Minor AI traces |
+| 26-45 | Noticeable AI patterns |
+| 46-65 | Reads like AI wrote it |
+| 66-85 | Heavy AI fingerprint |
+| 86-100 | Pure LinkedIn slop |
 
-## How results are shown
+### Click-to-Fix
 
-No jargon. No scores. Every finding includes:
-- **What we found** — the specific word, phrase, or pattern
-- **Why it matters** — plain-language explanation with data where available
-- **What to do instead** — concrete replacement suggestion
-
-Summary bar uses plain labels: "38 AI patterns found", "Strongest match: ChatGPT (29 patterns)", "Word variety: Low", "Sentence rhythm: Flat".
-
-## Project structure
-
-```
-TheRedPen/
-├── frontend/
-│   ├── index.html          # Single-page app
-│   ├── styles.css          # Warm cream theme, mobile-first
-│   └── app.js              # All detection logic (zero dependencies)
-├── references/
-│   ├── phrases.md           # Full phrase reference with sources
-│   └── structures.md        # Structural pattern reference
-├── SKILL.md                 # Claude Code skill (from original stop-slop)
-├── CHANGELOG.md
-├── README.md
-└── LICENSE
-```
+Every detected phrase has a **Fix** or **Remove** button. Click it to apply the replacement directly in the editor and re-score instantly. No generative AI — just deterministic string replacements.
 
 ## Quick start
 
 ```bash
-# Just open the file — no build step, no install
+# No build step — just open it
 open frontend/index.html
 
 # Or serve locally
 cd frontend && python3 -m http.server 8000
 ```
 
-Paste text, click **Analyze** (or just paste — it auto-analyzes). Results appear instantly across 5 tabs.
+Paste a LinkedIn post, click **Analyze** (or just paste — it auto-analyzes). Results appear across 4 tabs: AI Buzzwords, LinkedIn Cliches, Formatting Tricks, Writing Quality.
+
+## Chrome Extension
+
+Real-time AI scoring inside LinkedIn's compose box.
+
+```bash
+# Install locally
+# 1. Open chrome://extensions
+# 2. Enable Developer mode
+# 3. Click "Load unpacked"
+# 4. Select the extension/ directory
+```
+
+A score badge appears in LinkedIn editors. Click it for a findings panel with top patterns and suggestions. Same 232-entry engine, all client-side.
+
+## Project structure
+
+```
+TheRedPen/
+├── frontend/
+│   ├── index.html            # Web app
+│   ├── styles.css            # DM Sans + Source Serif 4, warm cream theme
+│   └── app.js                # Detection engine + UI (zero dependencies)
+├── extension/
+│   ├── manifest.json          # Chrome Manifest V3
+│   ├── engine.js              # Detection engine (extracted from app.js)
+│   ├── content.js             # LinkedIn compose box integration
+│   ├── content.css            # Badge + panel styles
+│   ├── popup.html             # Extension popup
+│   ├── privacy.html           # Privacy policy
+│   └── icon16/48/128.png      # Extension icons
+├── references/
+│   ├── phrases.md             # Full phrase database with 13 sources
+│   ├── structures.md          # Structural pattern reference
+│   └── examples.md            # Before/after examples
+├── SKILL.md                   # Claude Code skill
+├── CHANGELOG.md
+├── README.md
+└── LICENSE
+```
 
 ## Design
 
-- **Warm cream theme** (`#FDFBF7`) — no dark mode
-- **Source Serif 4** (headlines) + **Inter** (body)
+- **Warm cream palette** (`#FAF7F2`) with `#C13628` red accent
+- **Source Serif 4** (headings) + **DM Sans** (body)
 - **Mobile-first** — tested at 390px
-- **Inline highlights** — Grammarly-style underlines on detected patterns, hover for details
-- **Tabbed findings** — AI Favorite Words, Cliche Structures, Writing Rhythm, Repetition & Padding, Vague vs Specific
+- **Dark score block** with horizontal thermometer
+- **Red left-border** on finding cards (the "red pen mark")
+- **Staggered entrance animations** on results
 
-## Constraints
+## Data sources
 
-- Everything runs client-side. Your text never leaves your browser.
-- Zero dependencies. No build step. No API calls.
-- No composite scores — just counts and plain descriptions.
-- No adversarial detection claims. This is a self-editing tool, not a plagiarism detector.
+The phrase database consolidates research from 13 sources:
 
-## Sources
+1. stop-slop (Hardik Pandya) — 49 phrases, 7 structures
+2. Anti-Slop-Writing (GitHub) — 500+ vocabulary items
+3. IsGPT.org — 56 phrases with frequency multipliers
+4. EQBench Slop Score — 1,650 word list
+5. Pangram Labs — 100+ nouns, 70+ verbs
+6. FSU "delve" paper — 21 focal words
+7. GPTZero AI Vocabulary — 50+ phrases
+8. SLOP_Detector (GitHub) — 209 fiction patterns
+9. Humanizer skill (GitHub/blader) — 24 pattern categories
+10. Becky Tuch / Lit Mag News — 15 creative writing tells
+11. tropes.fyi — 32 named AI writing tropes
+12. Wikipedia: Signs of AI Writing
+13. Academic papers (Nature, Science journals)
 
-The phrase database consolidates research from 15+ sources including the original stop-slop, Anti-Slop-Writing (GitHub), GPTZero, IsGPT.org, EQBench, Pangram Labs, the FSU "delve" paper, SLOP_Detector, tropes.fyi, and academic papers from Nature and Science. Full source list in `references/phrases.md`.
+## Privacy
+
+Everything runs client-side. Your text never leaves your browser. No analytics, no cookies, no tracking, no accounts. See [extension/privacy.html](extension/privacy.html) for the full privacy policy.
 
 ## Credits
 
-Originally forked from [stop-slop](https://github.com/hardikpandya/stop-slop) by [Hardik Pandya](https://hvpandya.com). Rebuilt as The Red Pen with expanded detection, new frontend, and model fingerprinting.
+Originally forked from [stop-slop](https://github.com/hardikpandya/stop-slop) by [Hardik Pandya](https://hvpandya.com). Rebuilt as The Red Pen LinkedIn Edition with expanded detection, AI scoring, click-to-fix editing, and Chrome extension.
 
 ## License
 
-MIT. Use freely, share widely.
+MIT
