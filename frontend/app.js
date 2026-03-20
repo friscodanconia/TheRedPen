@@ -1312,13 +1312,20 @@ function runAnalysis() {
   const formattingKeys = ["broetry", "emojiFormatting", "ruleOfThree", "hashtagSpam", "fragments", "hookPayoff"];
   const qualityKeys = ["binaryContrasts", "negativeListings", "notOnlyButAlso", "ingOpeners", "transitionDensity", "motivationalArc"];
 
-  const hasBuzzwords = result.phraseHits.some(h => buzzwordCats.includes(h.category));
-  const hasCliches = result.phraseHits.some(h => clicheCats.includes(h.category));
-  const hasFormatting = formattingKeys.some(k => result.structures[k] && result.structures[k].matches.length > 0);
-  const hasQuality = qualityKeys.some(k => result.structures[k] && result.structures[k].matches.length > 0) || result.treadmill.length > 0 || result.concreteness.length > 0;
+  // Count findings per tab
+  const buzzwordCount = result.phraseHits.filter(h => buzzwordCats.includes(h.category)).reduce((s, h) => s + h.count, 0);
+  const clicheCount = result.phraseHits.filter(h => clicheCats.includes(h.category)).reduce((s, h) => s + h.count, 0);
+  const formattingCount = formattingKeys.reduce((s, k) => s + (result.structures[k] ? result.structures[k].matches.length : 0), 0);
+  const qualityCount = qualityKeys.reduce((s, k) => s + (result.structures[k] ? result.structures[k].matches.length : 0), 0) + result.treadmill.length + result.concreteness.length;
 
-  // Always has quality (rhythm metrics), but prefer tabs with active findings
-  const firstTab = hasBuzzwords ? "buzzwords" : hasCliches ? "cliches" : hasFormatting ? "formatting" : "quality";
+  // Show counts on tab labels
+  tabBar.querySelector('[data-tab="buzzwords"]').textContent = `AI Buzzwords${buzzwordCount ? ` (${buzzwordCount})` : ""}`;
+  tabBar.querySelector('[data-tab="cliches"]').textContent = `LinkedIn Cliches${clicheCount ? ` (${clicheCount})` : ""}`;
+  tabBar.querySelector('[data-tab="formatting"]').textContent = `Formatting Tricks${formattingCount ? ` (${formattingCount})` : ""}`;
+  tabBar.querySelector('[data-tab="quality"]').textContent = `Writing Quality`;
+
+  // Auto-switch to first tab with findings
+  const firstTab = buzzwordCount ? "buzzwords" : clicheCount ? "cliches" : formattingCount ? "formatting" : "quality";
   switchToTab(firstTab);
 
   // Render overlay highlights
