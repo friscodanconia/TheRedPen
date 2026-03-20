@@ -1208,9 +1208,9 @@ editor.addEventListener("input", () => {
   wordCountEl.textContent = `${words} word${words === 1 ? "" : "s"}`;
 });
 
-// Auto-analyze on paste
+// Update word count on paste (but don't auto-analyze)
 editor.addEventListener("paste", () => {
-  setTimeout(runAnalysis, 50);
+  setTimeout(() => editor.dispatchEvent(new Event("input")), 50);
 });
 
 // Buttons
@@ -1396,7 +1396,7 @@ function renderScore(score) {
     for (let p = 100; p >= 0; p--) {
       if (score >= pcts[p]) { percentile = p; break; }
     }
-    verdictText += ` — higher than ${percentile}% of ${benchmarkDist.totalPosts} benchmarked posts`;
+    verdictText += ` — higher than ${percentile}% of ${benchmarkDist.totalPosts} human-written LinkedIn posts`;
   }
 
   verdict.textContent = verdictText;
@@ -1747,7 +1747,7 @@ function buildPlainReport(result) {
     for (let p = 100; p >= 0; p--) {
       if (result.aiScore >= pcts[p]) { percentile = p; break; }
     }
-    report += ` (higher than ${percentile}% of ${benchmarkDist.totalPosts} benchmarked posts)`;
+    report += ` (higher than ${percentile}% of ${benchmarkDist.totalPosts} human-written LinkedIn posts)`;
   }
   report += `\n`;
   report += `Total AI patterns found: ${result.totalIssues}\n`;

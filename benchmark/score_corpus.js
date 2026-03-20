@@ -117,17 +117,18 @@ domains.forEach((domain) => {
   stats(a, "  AI");
 });
 
-// Build percentile distribution for frontend
-const allScores = valid.map((s) => s.aiScore).sort((a, b) => a - b);
+// Build percentile distribution for frontend — human posts only
+// The question is "does my post have more AI patterns than real human posts?"
+const humanSorted = [...humanScores].sort((a, b) => a - b);
 const percentiles = {};
 for (let i = 0; i <= 100; i++) {
-  const idx = Math.min(Math.floor((i / 100) * allScores.length), allScores.length - 1);
-  percentiles[i] = allScores[idx];
+  const idx = Math.min(Math.floor((i / 100) * humanSorted.length), humanSorted.length - 1);
+  percentiles[i] = humanSorted[idx];
 }
 
 const distPath = path.join(__dirname, "..", "frontend", "distribution.json");
 fs.writeFileSync(distPath, JSON.stringify({
-  totalPosts: valid.length,
+  totalPosts: humanScores.length,
   humanCount: humanScores.length,
   aiCount: aiScores.length,
   percentiles,
