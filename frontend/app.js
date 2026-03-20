@@ -1131,7 +1131,6 @@ const clearBtn = document.getElementById("clear-btn");
 const wordCountEl = document.getElementById("word-count");
 const textWarning = document.getElementById("text-warning");
 const summarySection = document.getElementById("summary-section");
-const summaryBar = document.getElementById("summary-bar");
 const findingsSection = document.getElementById("findings-section");
 const tabBar = document.getElementById("tab-bar");
 const copyReportBtn = document.getElementById("copy-report-btn");
@@ -1187,13 +1186,6 @@ tabBar.addEventListener("click", e => {
   const tab = e.target.closest(".tab");
   if (!tab) return;
   switchToTab(tab.dataset.tab);
-});
-
-// Stat cards click — jump to relevant tab
-document.getElementById("summary-bar").addEventListener("click", e => {
-  const card = e.target.closest(".stat-card");
-  if (!card || !card.dataset.goto) return;
-  switchToTab(card.dataset.goto);
 });
 
 // Sync overlay scroll with textarea
@@ -1266,39 +1258,6 @@ function runAnalysis() {
 
   // Score hero
   renderScore(result.aiScore);
-
-  // Summary bar — 4 items
-  document.getElementById("total-issues").textContent = result.totalIssues;
-  document.querySelector("#total-issues + .stat-label").textContent = `Pattern${result.totalIssues === 1 ? "" : "s"} found`;
-
-  const worstEl = document.getElementById("worst-category");
-  if (result.worstCategory) {
-    worstEl.querySelector(".stat-number").textContent = CATEGORY_LABELS[result.worstCategory.name] || result.worstCategory.name;
-    worstEl.querySelector(".stat-number").style.fontSize = "1rem";
-    worstEl.querySelector(".stat-label").textContent = `${result.worstCategory.count} hit${result.worstCategory.count === 1 ? "" : "s"}`;
-    // Point to the right tab based on category type
-    const buzzwordCats = ["vocabulary", "filler", "phrase", "transition", "inflation"];
-    const clicheCats = ["engagement_bait", "humble_brag", "thought_leader", "journey_narrative", "meta", "throat_clearing", "emphasis", "performative", "conclusion_bloat", "treadmill"];
-    const formattingKeys = ["broetry", "emojiFormatting", "ruleOfThree", "hashtagSpam", "fragments", "hookPayoff"];
-    const cat = result.worstCategory.name;
-    if (buzzwordCats.includes(cat)) worstEl.dataset.goto = "buzzwords";
-    else if (clicheCats.includes(cat)) worstEl.dataset.goto = "cliches";
-    else if (formattingKeys.includes(cat)) worstEl.dataset.goto = "formatting";
-    else worstEl.dataset.goto = "quality";
-  } else {
-    worstEl.querySelector(".stat-number").textContent = "\u2014";
-    worstEl.querySelector(".stat-number").style.fontSize = "";
-    worstEl.querySelector(".stat-label").textContent = "Worst category";
-  }
-
-  const broetryEl = document.getElementById("broetry-score");
-  const broetryRating = result.rhythm.broetryScore;
-  broetryEl.querySelector(".stat-number").textContent = broetryRating.rating === "good" ? "Low" : broetryRating.rating === "warn" ? "Medium" : "High";
-  broetryEl.querySelector(".stat-label").textContent = "Broetry score";
-
-  const engBaitEl = document.getElementById("engagement-bait-count");
-  engBaitEl.querySelector(".stat-number").textContent = result.engagementBaitCount;
-  engBaitEl.querySelector(".stat-label").textContent = "Bait phrases";
 
   // Render 4 tab panels
   renderBuzzwordsPanel(result);

@@ -257,7 +257,7 @@ body {
 
 /* ===================== SCORE BLOCK ===================== */
 .summary-section {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   animation: fadeUp 0.5s ease both;
 }
 
@@ -352,58 +352,6 @@ body {
   margin-top: 0.15rem;
 }
 
-/* ===================== STATS ROW ===================== */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.6rem;
-  animation: fadeUp 0.5s 0.1s ease both;
-}
-
-.stat-card {
-  background: var(--surface);
-  border-radius: var(--radius-sm);
-  padding: 1rem 0.75rem;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-light);
-  cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.15s;
-}
-
-.stat-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
-}
-
-.stat-number {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.2;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-.stat-label {
-  display: block;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  text-decoration-color: var(--border);
-  text-underline-offset: 3px;
-  font-weight: 500;
-  color: var(--text-light);
-  margin-top: 0.2rem;
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.stat-total .stat-number {
-  color: var(--red);
-}
 
 /* ===================== FINDINGS ===================== */
 .findings-section {
@@ -691,10 +639,6 @@ body {
 
   .toolbar-left, .toolbar-right {
     justify-content: center;
-  }
-
-  .stats-row {
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .score-top-row {
