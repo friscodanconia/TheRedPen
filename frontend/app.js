@@ -1442,7 +1442,15 @@ function renderClichesPanel(result) {
   const hits = result.phraseHits.filter(h => clicheCats.includes(h.category));
 
   if (hits.length === 0) {
-    panel.innerHTML = `<div class="empty-state">No LinkedIn cliches detected<span>Your post sounds original.</span></div>`;
+    panel.innerHTML = `<div class="empty-state">No LinkedIn cliches detected<span>Your post sounds original.</span></div>
+    <div class="finding-card" style="margin-top:1rem; border-left-color: var(--border);">
+      <h3 class="finding-title" style="color:var(--text-dim);">What we look for here</h3>
+      <p class="finding-explanation" style="margin-top:0.5rem;"><strong style="color:var(--text);">Humble brags</strong> — "I'm humbled to announce", "honored to share", "still can't believe", "pinch me moment"</p>
+      <p class="finding-explanation"><strong style="color:var(--text);">Engagement bait</strong> — "agree?", "drop a comment", "follow me for more", "tag someone who", "save this for later"</p>
+      <p class="finding-explanation"><strong style="color:var(--text);">Thought-leader framing</strong> — "we need to talk about", "read that again", "hard truth", "nobody tells you this"</p>
+      <p class="finding-explanation"><strong style="color:var(--text);">Journey narratives</strong> — "here's my story", "fast forward to today", "the lesson?", "if I can do it so can you"</p>
+      <p class="finding-explanation"><strong style="color:var(--text);">Soft AI engagement</strong> — "I'd love to hear", "share your thoughts", "feel free to", "you're not alone"</p>
+    </div>`;
     return;
   }
 
