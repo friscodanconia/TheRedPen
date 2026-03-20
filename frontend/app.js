@@ -1306,6 +1306,21 @@ function runAnalysis() {
   renderFormattingPanel(result);
   renderQualityPanel(result);
 
+  // Auto-switch to first tab with content
+  const buzzwordCats = ["vocabulary", "filler", "phrase", "transition", "inflation"];
+  const clicheCats = ["engagement_bait", "humble_brag", "thought_leader", "journey_narrative", "meta", "throat_clearing", "emphasis", "performative", "conclusion_bloat", "treadmill"];
+  const formattingKeys = ["broetry", "emojiFormatting", "ruleOfThree", "hashtagSpam", "fragments", "hookPayoff"];
+  const qualityKeys = ["binaryContrasts", "negativeListings", "notOnlyButAlso", "ingOpeners", "transitionDensity", "motivationalArc"];
+
+  const hasBuzzwords = result.phraseHits.some(h => buzzwordCats.includes(h.category));
+  const hasCliches = result.phraseHits.some(h => clicheCats.includes(h.category));
+  const hasFormatting = formattingKeys.some(k => result.structures[k] && result.structures[k].matches.length > 0);
+  const hasQuality = qualityKeys.some(k => result.structures[k] && result.structures[k].matches.length > 0) || result.treadmill.length > 0 || result.concreteness.length > 0;
+
+  // Always has quality (rhythm metrics), but prefer tabs with active findings
+  const firstTab = hasBuzzwords ? "buzzwords" : hasCliches ? "cliches" : hasFormatting ? "formatting" : "quality";
+  switchToTab(firstTab);
+
   // Render overlay highlights
   renderOverlay(text, result);
 }
