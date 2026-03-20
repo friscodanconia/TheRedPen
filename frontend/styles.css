@@ -367,6 +367,13 @@ body {
   text-align: center;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .stat-number {
@@ -383,6 +390,9 @@ body {
 .stat-label {
   display: block;
   font-size: 0.9rem;
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
   font-weight: 500;
   color: var(--text-light);
   margin-top: 0.2rem;

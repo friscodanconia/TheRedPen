@@ -1172,13 +1172,28 @@ const CATEGORY_LABELS = {
 };
 
 // Tab switching
+function switchToTab(tabName) {
+  tabBar.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  const target = tabBar.querySelector(`.tab[data-tab="${tabName}"]`);
+  if (target) target.classList.add("active");
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  const panel = document.getElementById(`panel-${tabName}`);
+  if (panel) panel.classList.add("active");
+  // Scroll findings into view
+  findingsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 tabBar.addEventListener("click", e => {
   const tab = e.target.closest(".tab");
   if (!tab) return;
-  tabBar.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  tab.classList.add("active");
-  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-  document.getElementById(`panel-${tab.dataset.tab}`).classList.add("active");
+  switchToTab(tab.dataset.tab);
+});
+
+// Stat cards click — jump to relevant tab
+document.getElementById("summary-bar").addEventListener("click", e => {
+  const card = e.target.closest(".stat-card");
+  if (!card || !card.dataset.goto) return;
+  switchToTab(card.dataset.goto);
 });
 
 // Sync overlay scroll with textarea
@@ -1261,6 +1276,15 @@ function runAnalysis() {
     worstEl.querySelector(".stat-number").textContent = CATEGORY_LABELS[result.worstCategory.name] || result.worstCategory.name;
     worstEl.querySelector(".stat-number").style.fontSize = "1rem";
     worstEl.querySelector(".stat-label").textContent = `${result.worstCategory.count} hit${result.worstCategory.count === 1 ? "" : "s"}`;
+    // Point to the right tab based on category type
+    const buzzwordCats = ["vocabulary", "filler", "phrase", "transition", "inflation"];
+    const clicheCats = ["engagement_bait", "humble_brag", "thought_leader", "journey_narrative", "meta", "throat_clearing", "emphasis", "performative", "conclusion_bloat", "treadmill"];
+    const formattingKeys = ["broetry", "emojiFormatting", "ruleOfThree", "hashtagSpam", "fragments", "hookPayoff"];
+    const cat = result.worstCategory.name;
+    if (buzzwordCats.includes(cat)) worstEl.dataset.goto = "buzzwords";
+    else if (clicheCats.includes(cat)) worstEl.dataset.goto = "cliches";
+    else if (formattingKeys.includes(cat)) worstEl.dataset.goto = "formatting";
+    else worstEl.dataset.goto = "quality";
   } else {
     worstEl.querySelector(".stat-number").textContent = "\u2014";
     worstEl.querySelector(".stat-number").style.fontSize = "";
