@@ -15,7 +15,7 @@
 
 const PHRASE_DB = [
   // --- TIER 1: Universal red flags ---
-  { text: "delve", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "explore, examine, dig into", explanation: "'Delve' is one of the most overused AI words. Usage in published text jumped 400% after ChatGPT launched." },
+  { text: "delve", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "explore, examine, dig into", explanation: "'Delve' is one of the most overused AI words. Usage in published text jumped 400% after LLMs launched." },
   { text: "tapestry", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "mix, combination, fabric", explanation: "AI loves calling complex things a 'tapestry.' Real writers almost never use this word outside textile contexts." },
   { text: "testament", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "proof, evidence, sign", explanation: "'A testament to' is AI's favorite way to say something proves something. Just say it proves it." },
   { text: "pivotal", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "key, important, critical", explanation: "AI overuses 'pivotal' to make ordinary things sound decisive. Most things described as pivotal aren't." },
@@ -252,7 +252,7 @@ const PHRASE_DB = [
   { text: "showcase", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "show, display, demonstrate", explanation: "AI's way of saying 'show.' Just say 'show.'" },
   { text: "nuanced", tier: 1, category: "vocabulary", models: ["chatgpt", "claude"], replacement: "subtle, complex, layered", explanation: "AI's favorite adjective for seeming thoughtful. Be specific about what's subtle." },
   { text: "enhance", tier: 1, category: "vocabulary", models: ["chatgpt"], replacement: "improve, boost, strengthen", explanation: "AI upgrade verb. 'Improve' is simpler." },
-  { text: "realm", tier: 1, category: "vocabulary", models: ["chatgpt", "deepseek"], replacement: "area, field, domain", explanation: "AI literary vocabulary. 'Area' or 'field' work. DeepSeek especially loves this." },
+  { text: "realm", tier: 1, category: "vocabulary", models: ["chatgpt", "deepseek"], replacement: "area, field, domain", explanation: "AI literary vocabulary. 'Area' or 'field' work." },
 
   // --- Filler phrases from research ---
   { text: "in order to", tier: 2, category: "filler", models: ["chatgpt"], replacement: "to", explanation: "'In order to' is always replaceable by 'to.' Three words doing the job of one." },
@@ -282,15 +282,15 @@ const PHRASE_DB = [
   { text: "unwavering commitment", tier: 1, category: "inflation", models: ["chatgpt"], replacement: "dedication, commitment", explanation: "202x the human usage rate. 'Commitment' doesn't need 'unwavering' — it's implied." },
 
   // --- Claude-specific hedging ---
-  { text: "while this may vary", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it or be specific about what varies]", explanation: "Claude's signature hedge. Either be specific about the variation or cut it." },
-  { text: "generally speaking", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it — just speak]", explanation: "Claude hedge. If you're generalizing, the reader will see that." },
-  { text: "i should note", tier: 2, category: "filler", models: ["claude"], replacement: "[just note it]", explanation: "Claude self-reference. Don't announce that you're noting something — just note it." },
-  { text: "it's important to consider", tier: 2, category: "filler", models: ["claude"], replacement: "[just present the consideration]", explanation: "Claude throat-clearing. If it's important, present it. Don't announce importance." },
+  { text: "while this may vary", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it or be specific about what varies]", explanation: "AI hedge. Either be specific about the variation or cut it." },
+  { text: "generally speaking", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it — just speak]", explanation: "AI hedge. If you're generalizing, the reader will see that." },
+  { text: "i should note", tier: 2, category: "filler", models: ["claude"], replacement: "[just note it]", explanation: "AI self-reference. Don't announce that you're noting something — just note it." },
+  { text: "it's important to consider", tier: 2, category: "filler", models: ["claude"], replacement: "[just present the consideration]", explanation: "AI throat-clearing. If it's important, present it. Don't announce importance." },
 
-  // --- DeepSeek patterns ---
-  { text: "unlocking", tier: 2, category: "vocabulary", models: ["deepseek"], replacement: "enabling, finding, opening up", explanation: "DeepSeek's favorite metaphor. 'Enabling' or 'finding' are more direct." },
-  { text: "unveiling", tier: 2, category: "vocabulary", models: ["deepseek"], replacement: "showing, revealing, announcing", explanation: "DeepSeek drama verb. 'Showing' or 'revealing' work." },
-  { text: "paving the way", tier: 2, category: "vocabulary", models: ["deepseek"], replacement: "enabling, making possible, leading to", explanation: "DeepSeek cliche. 'Enabling' or 'making possible' are more direct." },
+  // --- Additional AI patterns ---
+  { text: "unlocking", tier: 2, category: "vocabulary", models: ["deepseek"], replacement: "enabling, finding, opening up", explanation: "AI metaphor. 'Enabling' or 'finding' are more direct." },
+  { text: "unveiling", tier: 2, category: "vocabulary", models: ["deepseek"], replacement: "showing, revealing, announcing", explanation: "AI drama verb. 'Showing' or 'revealing' work." },
+  { text: "paving the way", tier: 2, category: "vocabulary", models: ["deepseek"], replacement: "enabling, making possible, leading to", explanation: "AI cliche. 'Enabling' or 'making possible' are more direct." },
 
   // --- 2026-era AI tells (from differential analysis of 300 real LLM outputs vs 269 human posts) ---
   // These are conversational/structural patterns, not fancy vocabulary
@@ -341,13 +341,13 @@ const PHRASE_DB = [
   { text: "i'm excited to", tier: 2, category: "humble_brag", models: ["chatgpt", "claude", "gemini"], replacement: "[just do the thing]", explanation: "2026 AI tell. 17x AI, 0x human. AI's default enthusiasm opener." },
   { text: "thrilled to share", tier: 2, category: "humble_brag", models: ["chatgpt", "claude"], replacement: "[just share it]", explanation: "2026 AI tell. 10x AI, 0x human." },
 
-  // Claude-specific 2026 patterns
-  { text: "actually", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it — if it's actual, just state it]", explanation: "Claude 2026 tell. 4.4x more frequent in Claude than other models. Claude hedges with 'actually' to sound conversational." },
-  { text: "biggest", tier: 2, category: "inflation", models: ["claude"], replacement: "main, top, most important", explanation: "Claude 2026 tell. 5.1x more frequent in Claude. Claude dramatizes with superlatives." },
+  // Additional 2026 patterns
+  { text: "actually", tier: 2, category: "filler", models: ["claude"], replacement: "[cut it — if it's actual, just state it]", explanation: "2026 AI tell. AI hedges with 'actually' to sound conversational. Cut it." },
+  { text: "biggest", tier: 2, category: "inflation", models: ["claude"], replacement: "main, top, most important", explanation: "2026 AI tell. AI dramatizes with superlatives. 'Main' or 'most important' are more measured." },
 
-  // GPT-4o-specific 2026 patterns
-  { text: "embrace", tier: 2, category: "vocabulary", models: ["chatgpt"], replacement: "accept, try, adopt", explanation: "GPT-4o 2026 tell. 4.4x more frequent in GPT-4o. AI's motivational verb. 'Try' or 'adopt' are more honest." },
-  { text: "journey", tier: 2, category: "vocabulary", models: ["chatgpt"], replacement: "experience, path, process", explanation: "GPT-4o 2026 tell. 3.2x more frequent in GPT-4o. LinkedIn's most overused metaphor." },
+  // Model-specific 2026 patterns
+  { text: "embrace", tier: 2, category: "vocabulary", models: ["chatgpt"], replacement: "accept, try, adopt", explanation: "2026 AI tell. Overused motivational verb. 'Try' or 'adopt' are more honest." },
+  { text: "journey", tier: 2, category: "vocabulary", models: ["chatgpt"], replacement: "experience, path, process", explanation: "2026 AI tell. LinkedIn's most overused metaphor." },
 ];
 
 // Build lookup for quick searching
